@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Sciences Page</title>
+  <style>
+    body {
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    #sidebar {
+      width: 260px;
+      background: linear-gradient(to right top, #000B67, #0a3468);
+      color: white;
+      transition: 0.3s;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hide {
+      left: -100% !important;
+      display: none;
+    }
+
+    #rightside {
+      flex: 1;
+    }
+
+    .content {
+      background-color: white;
+      height: calc(100vh - 54px);
+    }
+
+    header {
+      background-color: rgba(255, 255, 255, 0.426);
+      display: flex;
+      align-items: center;
+      padding: 20px;
+    }
+
+    header button {
+      flex: 0;
+    }
+
+    header .ms-auto {
+      margin-left: auto;
+    }
+
+    #sidebar .list-group-item {
+      border-radius: 10px !important;
+      margin-bottom: 10px;
+      background-color: #1423a5;
+      color: rgb(212, 212, 212);
+    }
+
+    #sidebar .list-group-item.active {
+      background-color: #1423a5;
+    }
+
+    #sidebar .list-group-item:hover {
+      background-color: #3f4cc5;
+      color: white;
+      border: 1px solid rgb(255, 251, 251);
+    }
+
+    .shadow:hover {
+      background-color: #7183c0;
+      color: white;
+    }
+
+    /* Dark mode styles */
+    .dark-mode {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .dark-mode header.px-3.py-2 {
+      background-color: #222;
+    }
+
+    .dark-mode #sidebar {
+      background: linear-gradient(to right top, #0a3468, #000B67);
+    }
+
+    .dark-mode .list-group-item {
+      background-color: #444;
+      color: #fff;
+    }
+
+    .dark-mode .list-group-item.active,
+    .dark-mode .list-group-item:hover {
+      background-color: #666;
+      color: #fff;
+      border: none;
+    }
+
+    .dark-mode .shadow:hover {
+      background-color: #555;
+      color: #fff;
+    }
+
+    .dark-mode .content {
+      background-color: #222;
+    }
+
+    .dark-mode button {
+      background-color: #444;
+      color: #fff;
+    }
+  </style>
+</head>
+<body onload="loaded()" class="d-flex" onkeyup="keyUp(event)">
+  <div id="sidebar" class="px-4 py-5">
+    <div class="list-group">
+      <a href="main.html" class="list-group-item list-group-item-action">Bosh sahifa</a>
+      <a href="teache.html" class="list-group-item list-group-item-action">O'qituvchilar</a>
+      <a href="pupils.html" class="list-group-item list-group-item-action">O'quvchilar</a>
+      <a href="employees.html" class="list-group-item list-group-item-action">Hodimlar</a>
+      <a href="sciences.html" class="list-group-item list-group-item-action active">Fanlar</a>
+      <a href="rooms.html" class="list-group-item list-group-item-action">Xonalar</a>
+      <a href="lessonscedules.html" class="list-group-item list-group-item-action">Dars jadvallari</a>
+    </div>
+  </div>
+  <div id="rightside">
+    <header class="px-3 py-2">
+      <button class="btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+      <button id="dark-mode-toggle" class="btn btn-dark ms-auto">Toggle Dark Mode</button>
+    </header>
+    <div class="content p-5">
+      <h2>Sciences Teachers Schedule</h2>
+      <table class="table table-striped mt-4">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Class</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="teacher-table">
+          <!-- Table rows will be inserted here by JavaScript -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    const loaded = () => console.log("sahifa yulandi");
+
+    const sidebar = document.getElementById("sidebar");
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const body = document.querySelector("body");
+
+    const sciencesTeachers = [
+      { name: 'John', surname: 'Doe', class: 'Physics', address: '123 Main St' },
+      { name: 'Jane', surname: 'Smith', class: 'Chemistry', address: '456 Elm St' },
+      { name: 'Emily', surname: 'Johnson', class: 'Biology', address: '789 Oak St' },
+      // Add more sciences teachers as needed
+    ];
+
+    const renderSciencesTeacherTable = () => {
+      const tableBody = document.getElementById('teacher-table');
+      tableBody.innerHTML = '';
+
+      sciencesTeachers.forEach((teacher, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${teacher.name}</td>
+          <td>${teacher.surname}</td>
+          <td>${teacher.class}</td>
+          <td><button class="btn btn-info" onclick="showAddress(${index})">Show Address</button></td>
+        `;
+        tableBody.appendChild(row);
+      });
+    };
+
+    const showAddress = (index) => {
+      alert(sciencesTeachers[index].address);
+    };
+
+    const toggleSidebar = () => {
+      sidebar.classList.toggle('hide');
+    };
+
+    const keyUp = (e) => {
+      if (e.key === "Escape") sidebar.classList.add("hide");
+    };
+
+    darkModeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      // Save the dark mode preference to localStorage
+      if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('dark-mode', 'enabled');
+      } else {
+        localStorage.removeItem('dark-mode');
+      }
+    });
+
+    // Apply dark mode if it was enabled previously
+    if (localStorage.getItem('dark-mode') === 'enabled') {
+      body.classList.add('dark-mode');
+    }
+
+    // Render the sciences teacher table on page load
+    renderSciencesTeacherTable();
+  </script>
+</body>
+</html>

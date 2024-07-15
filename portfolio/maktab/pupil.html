@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Pupil Page</title>
+  <style>
+    /* Styles remain the same as before */
+  </style>
+</head>
+<body onload="loaded()" class="d-flex" onkeyup="keyUp(event)">
+  <div id="sidebar" class="px-4 py-5">
+    <!-- Sidebar content -->
+  </div>
+  <div id="rightside">
+    <header class="px-3 py-2">
+      <!-- Header content -->
+    </header>
+    <div class="content p-5">
+      <h2>Pupils Schedule</h2>
+      <!-- Search input and button -->
+      <div class="input-group mb-3">
+        <input id="searchInput" type="text" class="form-control" placeholder="Search by name">
+        <button class="btn btn-primary" onclick="searchStudents()">Search</button>
+      </div>
+      <!-- Table -->
+      <table class="table table-striped mt-4">
+        <!-- Table headers and body remain the same as before -->
+      </table>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    const loaded = () => console.log("sahifa yulandi");
+
+    const sidebar = document.getElementById("sidebar");
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const body = document.querySelector("body");
+
+    const teachers = [
+      // Teacher data
+    ];
+
+    const pupils = [
+      // Pupil data
+    ];
+
+    const renderTeacherTable = () => {
+      // Rendering teacher table logic
+    };
+
+    const renderPupilTable = () => {
+      // Rendering pupil table logic
+    };
+
+    const searchStudents = () => {
+      const searchInput = document.getElementById('searchInput').value.trim().toLowerCase();
+      if (searchInput === '') {
+        // If no search input, alert accordingly
+        alert("Please enter a name to search for students.");
+        return;
+      }
+
+      // Check if the search matches any teacher or pupil name
+      const matchedTeachers = teachers.filter(teacher => `${teacher.name} ${teacher.surname}`.toLowerCase().includes(searchInput));
+      const matchedPupils = pupils.filter(pupil => `${pupil.name} ${pupil.surname}`.toLowerCase().includes(searchInput));
+
+      if (matchedTeachers.length > 0 || matchedPupils.length > 0) {
+        // If match found, alert the matched students
+        let message = '';
+        matchedTeachers.forEach(teacher => message += `Teacher: ${teacher.name} ${teacher.surname}\n`);
+        matchedPupils.forEach(pupil => message += `Pupil: ${pupil.name} ${pupil.surname}\n`);
+        alert(message);
+      } else {
+        // If no match found, alert accordingly
+        alert("No students found with the given name.");
+      }
+    };
+
+    // Other functions and event listeners remain the same as before
+
+    // Render the teacher and pupil tables on page load
+    renderTeacherTable();
+    renderPupilTable();
+  </script>
+</body>
+</html>

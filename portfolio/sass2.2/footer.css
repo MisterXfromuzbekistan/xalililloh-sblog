@@ -1,0 +1,108 @@
+@charset "UTF-8";
+footer {
+  width: 100%;
+  height: 800px;
+  display: grid;
+  grid-template-columns: 170px 350px 50px 350px 50px 350px 50px;
+  grid-template-rows: 200px 300px 50px 300px 50px;
+}
+footer strong {
+  width: 350px;
+  height: 60px;
+  border-bottom: 2px solid red;
+  font-size: 30px;
+  position: relative;
+  left: 570px;
+  top: 100px;
+  text-align: center;
+}
+footer .div1 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  border: 2px solid gray;
+}
+footer .div1 .imgs1 {
+  width: 100%;
+  height: 150px;
+  background-repeat: no-repeat;
+  background-position: 100%;
+  background-size: cover;
+  background-image: url(Без\ названия\ \(9\).jpg);
+}
+footer .div2 {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  border: 2px solid gray;
+}
+footer .div2 .imgs2 {
+  width: 100%;
+  height: 150px;
+  background-repeat: no-repeat;
+  background-position: 100%;
+  background-size: cover;
+  background-image: url(Без\ названия\ \(8\).jpg);
+}
+footer .div3 {
+  grid-column-start: 6;
+  grid-column-end: 7;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  border: 2px solid gray;
+}
+footer .div3 .imgs3 {
+  width: 100%;
+  height: 150px;
+  background-repeat: no-repeat;
+  background-position: 100%;
+  background-size: cover;
+  background-image: url(Без\ названия\ \(10\).jpg);
+}
+footer .div4 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  border: 2px solid gray;
+}
+footer .div4 .imgs4 {
+  width: 100%;
+  height: 150px;
+  background-repeat: no-repeat;
+  background-position: 100%;
+  background-size: cover;
+  background-image: url(Без\ названия\ \(11\).jpg);
+}
+footer .div5 {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  border: 2px solid gray;
+}
+footer .div5 .imgs5 {
+  width: 100%;
+  height: 150px;
+  background-repeat: no-repeat;
+  background-position: 100%;
+  background-size: cover;
+  background-image: url(Без\ названия\ \(12\).jpg);
+}
+footer .div6 {
+  grid-column-start: 6;
+  grid-column-end: 7;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  border: 2px solid gray;
+}
+footer .div6 .imgs6 {
+  width: 100%;
+  height: 150px;
+  background-repeat: no-repeat;
+  background-position: 100%;
+  background-size: cover;
+  background-image: url(Без\ названия\ \(13\).jpg);
+}/*# sourceMappingURL=footer.css.map */

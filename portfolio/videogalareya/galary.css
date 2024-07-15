@@ -1,0 +1,25 @@
+input {
+  max-width: 300px;
+}
+.video-box {
+  height: 200px;
+  background-color: gainsboro;
+}
+.delete-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.delete-button:hover {
+  background-color: rgba(255, 0, 0, 0.7);
+}
